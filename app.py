@@ -11,7 +11,6 @@ def get_properties():
     smiles_query = request.args.get("query", "")
     if smiles_query!="":
         properties = compute_all(smiles_query)
-    print(properties)
     
     return render_template(
         "base.html", smiles_query=smiles_query, Nrot_value = properties['nrot'], HBD_value = properties['hbd'], HBA_value = properties['hba']
