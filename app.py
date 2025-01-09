@@ -14,7 +14,7 @@ def get_properties():
         properties = compute_all(smiles_query)
 
     return render_template(
-        "display.html",
+        "base.html",
         smiles_query=smiles_query,
         Nrot_value=properties["nrot"],
         HBD_value=properties["hbd"],
