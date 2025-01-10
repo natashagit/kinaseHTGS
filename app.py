@@ -18,6 +18,7 @@ def get_properties():
     HBA_value = 0
     mw_value = 0
     tpsa_value = 0
+    label=""
 
     if smiles_query != "":
         properties, props = compute_all(smiles_query)
