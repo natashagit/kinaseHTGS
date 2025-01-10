@@ -64,7 +64,6 @@
                     justify-content: center;
                     align-items: center">
           <img src='{{ url_for("get_molecule_image") }}?smiles_query={{ smiles_query|urlencode }}'
-               alt="{{ smiles_query }}"
                class="card-img-top w-100 overflow-hidden"
                style="width: 50%;
                       height: 50%">
