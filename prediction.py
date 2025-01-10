@@ -7,7 +7,7 @@ from warnings import filterwarnings
 
 filterwarnings('ignore')
 
-def check_solubility(dataset, props):
+def check_solubility(props_for_prediction):
 
         dataset = "filtered_SOL.csv"  
         data = pd.read_csv(dataset)
@@ -28,12 +28,12 @@ def check_solubility(dataset, props):
         y_pred = model.predict(X_test)
 
         r2 = r2_score(y_test, y_pred)
-        print(f"R-squared on Test Set: {r2:.2f}")
+        # print(f"R-squared on Test Set: {r2:.2f}")
 
         props = np.array(props).reshape(1, -1)
         weighted_props = props * weights
         sol = model.predict(weighted_props)
-        print(f"solubility: {sol}")
+        # print(f"solubility: {sol}")
 
         if sol > 0:
             label = "Highly Soluble"
@@ -45,6 +45,3 @@ def check_solubility(dataset, props):
             label =  "Insoluble"
         
         return label
-
-
-
