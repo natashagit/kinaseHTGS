@@ -76,6 +76,7 @@ def compute_all(smiles):
     hba = get_HBA(obj)
     mw = get_molecular_weight(obj)
     tpsa = get_tpsa(obj)
+    props_for_prediction = [mw, hbd, nrot, tpsa]
     props = {
         "nrot": str(nrot),
         "hbd": str(hbd),
@@ -83,8 +84,7 @@ def compute_all(smiles):
         "mw": str(mw) + " Da",
         "tpsa": str(tpsa) + " Å²",
     }
-    print(props)
-    return props
+    return props, props_for_prediction
 
 
 compute_all(EXAMPLE_COMPOUNDS[3])
