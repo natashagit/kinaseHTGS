@@ -33,32 +33,31 @@ def solubility(props):
     mw, psa, n_rot, hbd, hba = props['MW'], props['psa'], props['nrot'], props['hbd'], props['hba']
     PSA, NROT, HBD, HBA, A_D_ratio = False, False, False, False, False
 
-    if mw <= 400:
-    
-        if psa > 0.2*mw:
+    if psa > 0.2*mw:
             print ('psa within range')
             PSA = True
         else:
             print ('low psa')
-        
-        if hba > hbd:
+    
+    if hba > hbd:
             print ('HBA > HBD')
             A_D_ratio = True
         else:
             print ('HBD higher than HBA')
-
-        if hbA < 10 and hbA > 7:
+    
+    if hbd < 3:
+            print ('hbD within range')
+            HBD = True
+    
+    if mw <= 400:
+        if hba < 10 and hba > 7:
             print('hbA within range')
             HBA = True
-        elif hbA < 7:
+        elif hba < 7:
             print ('hba low. probably not')
         else:
             print ('hba > 10. could be yes')
-            HBA = True
-            
-        if hbd < 3:
-            print ('hbD within range')
-            HBD = True
+            HBA = True        
         
         if n_rot<6:
             print ('n_rot is within the threshold')
@@ -67,63 +66,29 @@ def solubility(props):
     
     elif MW > 400 and MW < 550:
 
-        if psa > 0.2*mw:
-            print ('psa within range')
-            PSA = True
-        else:
-            print ('low psa')
-        
-        if hba > hbd:
-            print ('HBA > HBD')
-            A_D_ratio = True
-        else:
-            print ('HBD higher than HBA')
-
-        if hbA < 8 and hbA > 6:
+        if hba < 8 and hba > 6:
             print('hbA within range')
             HBA = True
-        elif hbA < 6:
+        elif hba < 6:
             print ('hba low. probably not')
         else:
             print ('hba > 8. could be yes')
             HBA = True
-            
-        if hbd < 3:
-            print ('hbD within range')
-            HBD = True
         
         if n_rot<9:
             print ('n_rot is within the threshold')
             NROT = True
 
     else:
-            if psa > 0.2*mw:
-            print ('psa within range')
-            PSA = True
-        else:
-            print ('low psa')
-        
-        if hba > hbd:
-            print ('HBA > HBD')
-            A_D_ratio = True
-        else:
-            print ('HBD higher than HBA')
-
-        if hbA < 8 and hbA > 6:
+        if hba < 8 and hba > 6:
             print('hbA within range')
             HBA = True
-        elif hbA < 6:
+        elif hba < 6:
             print ('hba low. probably not')
         else:
             print ('hba > 8. could be yes')
             HBA = True
-            
-        if hbd < 3:
-            print ('hbD within range')
-            HBD = True
         
         if n_rot<9:
             print ('n_rot is within the threshold')
             NROT = True
-
-        return True
