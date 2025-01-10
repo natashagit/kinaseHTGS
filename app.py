@@ -13,6 +13,8 @@ def get_properties():
     Nrot_value = 0
     HBD_value = 0
     HBA_value = 0
+    mw_value = 0
+    tpsa_value = 0
 
     if smiles_query != "":
         properties = compute_all(smiles_query)
