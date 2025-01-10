@@ -5,7 +5,6 @@ from rdkit.DataStructs.cDataStructs import ExplicitBitVect
 from rdkit.Chem import AllChem
 from rdkit.Chem import Descriptors
 from rdkit.Chem import rdMolDescriptors
-
 from typing import List
 
 
@@ -46,13 +45,15 @@ def get_HBA(mol):
 # Molecular Weight
 def get_molecular_weight(mol):
     mw = Chem.Descriptors.MolWt(mol)
-    return mw
+    mw2 = round(mw, 3)
+    return mw2
 
 
 # TPSA
 def get_tpsa(mol):
     tpsa = Chem.rdMolDescriptors.CalcTPSA(mol)
-    return tpsa
+    tpsa2 = round(tpsa, 3)
+    return tpsa2
 
 
 # conformational search
@@ -75,7 +76,14 @@ def compute_all(smiles):
     hba = get_HBA(obj)
     mw = get_molecular_weight(obj)
     tpsa = get_tpsa(obj)
-    props = {"nrot": nrot, "hbd": hbd, "hba": hba, "mw": mw, "tpsa": tpsa}
+    props = {
+        "nrot": str(nrot),
+        "hbd": str(hbd),
+        "hba": str(hba),
+        "mw": str(mw) + " Da",
+        "tpsa": str(tpsa) + " Å²",
+    }
+    print(props)
     return props
 
 
