@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <div class="vstack gap-4 mt-3">
+    <!-- Search bar -->
+    <div class="d-flex flex-column justify-content-center align-items-center"
+         style="height: 90vh">
+      <h1 class="text-primary" style="text-align: center; height: 10vh">Solubility of Chameleonic Molecules Predictor</h1>
+      <form action='{{ url_for("get_properties") }}'
+            method="GET"
+            style="width: 50%;
+                   max-width: 800px">
+        <div class="input-group input-group-lg">
+          <input type="text"
+                 name="query"
+                 id="compound-search-field"
+                 class="form-control form-control-lg"
+                 placeholder="Enter molecule here..."
+                 value="{{ smiles_query }}">
+          <button type="submit" class="btn btn-primary btn-lg">Search</button>
+        </div>
+      </form>
+    </div>
+
+    <!-- Search results -->
+    {% if smiles_list|length > 0 %}
+      <b>{{ smiles_query }}</b>
+      <b>NROT = {{ Nrot_value }}</b>
+      <b>HBD = {{ HBD_value }}</b>
+      <b>HBA = {{ HBA_value }}</b>
+      {% for smiles in smiles_list %}
+        <b>{{ smiles_query }}</b>
+        <b>NROT = {{ Nrot_value }}</b>
+        <b>HBD = {{ HBD_value }}</b>
+        <b>HBA = {{ HBA_value }}</b>
+      {% endfor %}
+    </div>
+  {% else %}
+
+  {% endif %}
+</div>
+{% endblock content %}
+
+{% block styles %}
+  <style>
+  .compound-card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+    gap: 2rem;
+    justify-items: center;
+  }
+
+  .compound-card-container {
+    width: 15rem;
+  }
+  </style>
+{% endblock styles %}
