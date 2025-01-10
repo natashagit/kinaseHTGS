@@ -38,10 +38,10 @@
                   align-items: center;
                   position: fixed;
                   z-index: 10000">
-        <img src="/home/user3/kinaseHTGS/images/mol1.png"
-             alt="Image"
-             style="max-width: 50%;
-                    margin-right: 20px">
+        <img src='{{ url_for("get_molecule_image") }}?smiles={{ smiles|urlencode }}&highlight={{ highlight|urlencode }}'
+             alt="{{ smiles }}"
+             class="card-img-top w-100 overflow-hidden"
+             style="aspect-ratio: 1">
         <div class = "properties" style = "z-index: 10001; font-size: 60px">
           <b>NROT = {{ Nrot_value }}</b>
           <br>
