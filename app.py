@@ -18,6 +18,7 @@ def get_properties():
     HBA_value = 0
     mw_value = 0
     tpsa_value = 0
+    label=""
 
     if smiles_query != "":
         properties, props = compute_all(smiles_query)
@@ -27,7 +28,7 @@ def get_properties():
         mw_value = properties["mw"]
         tpsa_value = properties["tpsa"]
     
-        label = check_solubility("filtered_SOL.csv", props)
+        label = check_solubility(props)
 
 
     # Render solubility value as well
