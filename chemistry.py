@@ -3,7 +3,8 @@ from rdkit.Chem import Lipinski
 from rdkit.Chem import Draw
 from rdkit.DataStructs.cDataStructs import ExplicitBitVect
 from rdkit.Chem import AllChem
-import py3Dmol
+from rdkit.Chem import Descriptors
+from rdkit.Chem import rdMolDescriptors
 
 from typing import List
 
@@ -17,6 +18,7 @@ EXAMPLE_COMPOUNDS = [
 # input smiles
 def get_rdkit_object(smiles: str):
     mol = Chem.MolFromSmiles(smiles)
+    mol2 = Chem.AddHs(mol)
     return mol
 
 
@@ -39,6 +41,15 @@ def get_HBA(mol):
 
 
 # Molecular Weight
+def get_molecular_weight(mol):
+    mw = Chem.Descriptors.MolWt(mol)
+    return mw
+
+
+# TPSA
+def get_tpsa(mol):
+    tpsa = Chem.rdMolDescriptors.CalcTPSA(mol)
+    return tpsa
 
 
 # conformational search
@@ -53,40 +64,15 @@ def conformer_search(mol):
     return mol2
 
 
-# get the 3D image
-def MolTo3DView(mol, size=(300, 300), style="stick", surface=False, opacity=0.5):
-    """Draw molecule in 3D
-
-    Args:
-    ----
-        mol: rdMol, molecule to show
-        size: tuple(int, int), canvas size
-        style: str, type of drawing molecule
-               style can be 'line', 'stick', 'sphere', 'carton'
-        surface, bool, display SAS
-        opacity, float, opacity of surface, range 0.0-1.0
-    Return:
-    ----
-        viewer: py3Dmol.view, a class for constructing embedded 3Dmol.js views in ipython notebooks.
-    """
-    assert style in ("line", "stick", "sphere", "carton")
-    mblock = Chem.MolToMolBlock(mol)
-    viewer = py3Dmol.view(width=size[0], height=size[1])
-    viewer.addModel(mblock, "mol")
-    viewer.setStyle({style: {}})
-    if surface:
-        viewer.addSurface(py3Dmol.SAS, {"opacity": opacity})
-    viewer.zoomTo()
-    return viewer
-
-
 # wrap everything
 def compute_all(smiles):
     obj = get_rdkit_object(smiles)
     nrot = get_rot_bonds(obj)
     hbd = get_HBD(obj)
     hba = get_HBA(obj)
-    props = {"nrot": nrot, "hbd": hbd, "hba": hba}
+    mw = get_molecular_weight(obj)
+    tpsa = get_tpsa(obj)
+    props = {"nrot": nrot, "hbd": hbd, "hba": hba, "mw": mw, "tpsa": tpsa}
     return props
 
 
