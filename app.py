@@ -2,6 +2,7 @@ from flask import Flask, render_template, request, Response
 from chemistry import compute_all
 import json
 from prediction import check_solubility
+import pandas as pd
 
 app = Flask(__name__)
 
