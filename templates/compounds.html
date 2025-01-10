@@ -23,17 +23,11 @@
     </div>
 
     <!-- Search results -->
-    {% if smiles_list|length > 0 %}
+    {% if smiles_query|length > 0 %}
       <b>{{ smiles_query }}</b>
       <b>NROT = {{ Nrot_value }}</b>
       <b>HBD = {{ HBD_value }}</b>
       <b>HBA = {{ HBA_value }}</b>
-      {% for smiles in smiles_list %}
-        <b>{{ smiles_query }}</b>
-        <b>NROT = {{ Nrot_value }}</b>
-        <b>HBD = {{ HBD_value }}</b>
-        <b>HBA = {{ HBA_value }}</b>
-      {% endfor %}
     </div>
   {% else %}
 
