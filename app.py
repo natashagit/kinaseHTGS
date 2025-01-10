@@ -1,5 +1,6 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, Response
 from chemistry import compute_all
+import json
 
 app = Flask(__name__)
 
@@ -45,12 +46,17 @@ def get_properties():
 # Render image of molecule
 @app.route("/molecule-image", methods=["GET"], endpoint="get_molecule_image")
 def get_molecule_image():
-    smiles = request.args.get("smiles", "")
-    # image_path = "images/mol1.png"
-    with open("molecules.json", "r") as f:
-        molecule_dict = json.load(f)
-    molecule_img_name = [key for key, value in molecule_dict.items() if value == smiles]
-    image_path = molecule_img_name[0] + ".png"
-    with open(image_path, "rb") as img_file:
-        img_data = img_file.read()
+    smiles_query = request.args.get("smiles_query", "")
+    img_data = []
+    if smiles_query != "":
+        with open("molecules.json", "r") as f:
+            molecule_dict = json.load(f)
+
+        for key, value in molecule_dict.items():
+            if value == smiles_query:
+                molecule_img_name = key
+
+        image_path = "images/" + molecule_img_name + ".png"
+        with open(image_path, "rb") as img_file:
+            img_data = img_file.read()
     return Response(img_data, mimetype="image/png")
