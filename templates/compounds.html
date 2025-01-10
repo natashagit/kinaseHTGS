@@ -24,10 +24,32 @@
 
     <!-- Search results -->
     {% if smiles_query|length > 0 %}
-      <b>{{ smiles_query }}</b>
-      <b>NROT = {{ Nrot_value }}</b>
-      <b>HBD = {{ HBD_value }}</b>
-      <b>HBA = {{ HBA_value }}</b>
+      <div class="giant-square"
+           style="width: 100vw;
+                  height: 100vh;
+                  background-color: white;
+                  margin: 0;
+                  position: fixed;
+                  z-index: 9999"></div>
+      <div class="properties-container"
+           style="height:100vh;
+                  display: flex;
+                  justify-content: center;
+                  align-items: center;
+                  position: fixed;
+                  z-index: 10000">
+        <img src="your-image-url.jpg"
+             alt="Image"
+             style="max-width: 50%;
+                    margin-right: 20px">
+        <div class = "properties" style = "z-index: 10001; font-size: 60px">
+          <b>NROT = {{ Nrot_value }}</b>
+          <br>
+          <b>HBD = {{ HBD_value }}</b>
+          <br>
+          <b>HBA = {{ HBA_value }}</b>
+        </div>
+      </div>
     </div>
   {% else %}
 
