@@ -38,8 +38,8 @@
                   align-items: center;
                   position: fixed;
                   z-index: 10000">
-        <img src='{{ url_for("get_molecule_image") }}?smiles={{ smiles|urlencode }}&highlight={{ highlight|urlencode }}'
-             alt="{{ smiles }}"
+        <img src='{{ url_for("get_molecule_image") }}?smiles_query={{ smiles_query|urlencode }}'
+             alt="{{ smiles_query }}"
              class="card-img-top w-100 overflow-hidden"
              style="aspect-ratio: 1">
         <div class = "properties" style = "z-index: 10001; font-size: 30px">
