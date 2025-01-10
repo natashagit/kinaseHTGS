@@ -18,8 +18,7 @@ def get_properties():
     HBA_value = 0
     mw_value = 0
     tpsa_value = 0
-    label=""
-
+    label = ""
     if smiles_query != "":
         properties, props = compute_all(smiles_query)
         Nrot_value = properties["nrot"]
@@ -27,9 +26,8 @@ def get_properties():
         HBA_value = properties["hba"]
         mw_value = properties["mw"]
         tpsa_value = properties["tpsa"]
-    
-        label = check_solubility(props)
 
+        label = check_solubility(props)
 
     # Render solubility value as well
     return render_template(
@@ -40,7 +38,7 @@ def get_properties():
         HBA_value=HBA_value,
         mw_value=mw_value,
         tpsa_value=tpsa_value,
-        label=label
+        label=label,
     )
 
 
