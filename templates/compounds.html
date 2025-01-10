@@ -12,7 +12,7 @@
       <form action='{{ url_for("get_properties") }}'
             method="GET"
             style="width: 50%;
-                   max-width: 800px">
+                   max-width: 300px">
         <div class="input-group input-group-lg">
           <input type="text"
                  name="query"
@@ -76,23 +76,45 @@
                     display: flex;
                     flex-direction: column;
                     justify-content: center">
-          <b>NROT = {{ Nrot_value }}</b>
+          <b>Number of rotational bonds = {{ Nrot_value }}</b>
           <br>
-          <b>HBD = {{ HBD_value }}</b>
+          <b> Hydrogen bond donors = {{ HBD_value }}</b>
           <br>
-          <b>HBA = {{ HBA_value }}</b>
+          <b>Hydrogen bond acceptors = {{ HBA_value }}</b>
           <br>
-          <b>MW = {{ mw_value }}</b>
+          <b>Molecular weight = {{ mw_value }}</b>
           <br>
-          <b>TPSA = {{ tpsa_value }}</b>
-          {% if smiles_query == "Highly Soluble" %}
-            <b style="color:aqua">{{ label }}</b>
-          {% elif smiles_query == "Soluble" %}
-            <b style="color:rgb(34, 255, 0)">{{ label }}</b>
-          {% elif smiles_query == "Low Solubility" %}
-            <b style="color:rgb(255, 162, 0)">{{ label }}</b>
-          {% elif smiles_query == "Insoluble" %}
-            <b style="color:rgb(255, 0, 0)">{{ label }}</b>
+          <b>Topological polar surface area = {{ tpsa_value }}</b>
+          <br>
+          {% if label == "Highly Soluble" %}
+            <b style="color:aqua;
+                      display: flex;
+                      flex-direction: column;
+                      justify-content: center;
+                      font-size:50px">{{ label }}</b>
+          {% elif label == "Soluble" %}
+            <b style="color:rgb(34, 255, 0);
+                      display: flex;
+                      flex-direction: column;
+                      justify-content: center;
+                      z-index: 10001;
+                      font-size:50px">{{ label }}</b>
+          {% elif label == "Low Solubility" %}
+            <b style="color:rgb(255, 162, 0);
+                      font-size:50px;
+                      z-index: 10001;
+                      display: flex;
+                      flex-direction: column;
+                      justify-content: center">{{ label }}</b>
+          {% elif label == "Insoluble" %}
+            <b style="color:rgb(255, 0, 0);
+                      font-size:50px;
+                      z-index: 10001;
+                      display: flex;
+                      flex-direction: column;
+                      justify-content: center;
+                      align-items: center;
+                      margin-right: 5%">{{ label }}</b>
           {% endif %}
         </div>
       </div>
