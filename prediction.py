@@ -30,7 +30,7 @@ def check_solubility(props_for_prediction):
         r2 = r2_score(y_test, y_pred)
         # print(f"R-squared on Test Set: {r2:.2f}")
 
-        props = np.array(props).reshape(1, -1)
+        props = np.array(props_for_prediction).reshape(1, -1)
         weighted_props = props * weights
         sol = model.predict(weighted_props)
         # print(f"solubility: {sol}")
