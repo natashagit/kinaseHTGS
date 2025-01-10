@@ -1,6 +1,8 @@
 from flask import Flask, render_template, request, Response
 from chemistry import compute_all
 import json
+from prediction import check_solubility
+import pandas as pd
 
 app = Flask(__name__)
 
@@ -18,17 +20,15 @@ def get_properties():
     tpsa_value = 0
 
     if smiles_query != "":
-        properties = compute_all(smiles_query)
+        properties, props = compute_all(smiles_query)
         Nrot_value = properties["nrot"]
         HBD_value = properties["hbd"]
         HBA_value = properties["hba"]
         mw_value = properties["mw"]
         tpsa_value = properties["tpsa"]
+    
+        label = check_solubility("filtered_SOL.csv", props)
 
-    ### Add code for calculating solubility here
-    ##
-    ##
-    ##
 
     # Render solubility value as well
     return render_template(
@@ -39,6 +39,7 @@ def get_properties():
         HBA_value=HBA_value,
         mw_value=mw_value,
         tpsa_value=tpsa_value,
+        label=label
     )
 
 
