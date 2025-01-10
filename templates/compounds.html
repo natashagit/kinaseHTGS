@@ -5,7 +5,10 @@
     <!-- Search bar -->
     <div class="d-flex flex-column justify-content-center align-items-center"
          style="height: 90vh">
-      <h1 class="text-primary" style="text-align: center; height: 10vh">Solubility of Chameleonic Molecules Predictor</h1>
+      <h1 class="text-primary"
+          style="text-align: center;
+                 height: 10vh;
+                 color: white !important">Solubility of Chameleonic Molecules Predictor</h1>
       <form action='{{ url_for("get_properties") }}'
             method="GET"
             style="width: 50%;
@@ -16,8 +19,13 @@
                  id="compound-search-field"
                  class="form-control form-control-lg"
                  placeholder="Enter molecule here..."
-                 value="{{ smiles_query }}">
-          <button type="submit" class="btn btn-primary btn-lg">Search</button>
+                 value="{{ smiles_query }}"
+                 style="background-color: #021658;
+                        color:white">
+          <button type="submit"
+                  class="btn btn-primary btn-lg"
+                  style="background-color: #02165a;
+                         border: 1px solid white">Search</button>
         </div>
       </form>
     </div>
@@ -74,5 +82,8 @@
   .compound-card-container {
     width: 15rem;
   }
+  #compound-search-field::placeholder {
+      color: white;
+    }
   </style>
 {% endblock styles %}
