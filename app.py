@@ -28,7 +28,7 @@ def get_properties():
         mw_value = properties["mw"]
         tpsa_value = properties["tpsa"]
     
-        label = check_solubility("filtered_SOL.csv", props)
+        label = check_solubility(props)
 
 
     # Render solubility value as well
