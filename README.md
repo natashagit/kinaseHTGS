@@ -78,6 +78,7 @@ This project utilizes the following tools and libraries:
 - **[Flask](https://flask.palletsprojects.com/)**: For backend development.
 - **[RDKit](https://www.rdkit.org/)**: For molecular property computations.
 - **[PyMOL](https://pymol.org/2/)**: For 3D molecular visualizations.
+- **[scikit-learn](https://scikit-learn.org/)**: For building and training the Random Forest Regressor.
 
 
 
