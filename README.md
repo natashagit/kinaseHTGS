@@ -49,7 +49,7 @@ Users can input a molecule's name via a search bar. The application then display
    
 2. **Navigate to the project directory and install dependencies:**:
 
-# To install/update the project's dependencies
+## To install/update the project's dependencies
 ```sh
 cd kinaseHTGS
 pip install -r requirements.txt
