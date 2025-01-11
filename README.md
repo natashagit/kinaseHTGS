@@ -43,9 +43,9 @@ Users can input a molecule's name via a search bar. The application then display
 ## Installation and Setup
 
 1. **Clone the repository**:
-
-   ```bash
+```bash
    git clone https://github.com/natashagit/kinaseHTGS.git
+```
    
 2. **Navigate to the project directory and install dependencies:**:
 
@@ -57,8 +57,9 @@ pip install -r requirements.txt
 
 3. **Run the application**:
 
-   ```bash
+```bash
    python -m flask run
+```
 
 ## Repository Structure
 
