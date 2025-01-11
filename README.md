@@ -54,7 +54,9 @@ $> cd kinaseHTGS
 $> pip install -r requirements.txt
 
 3. **Run the application**:
-$> python -m flask run
+
+   ```bash
+   python -m flask run
 
 ## Repository Structure
 
