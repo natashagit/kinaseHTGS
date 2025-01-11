@@ -1,50 +1,79 @@
-# Hacking the Gender Stack 2025
+# Solubility Prediction of Large Chameleonic Molecules
 
-This template can be used as a starting point for developing your own application during the hackathon. The template is a [Flask](https://flask.palletsprojects.com/en/stable/) project - you can find a quick tutorial about Flask and its best practices [here](https://flask.palletsprojects.com/en/stable/tutorial/).
+## About
 
-## Common commands
+This project aims to predict the solubility of large, chameleonic molecules—compounds that alter their shape, influencing their solubility. Understanding solubility is crucial in drug development, as it determines the administration route (oral ingestion vs. intravenous) and impacts dosage considerations that can affect other organs.
+
+## Application Screenshot
+
+![Application Screenshot](screenshot1.png "Screenshot of page 1 of the Application")
+![Application Screenshot](screenshot2.png "Screenshot of page 2 of the Application")
+
+## Project Overview
+
+Due to the scarcity of solubility data for large molecules, we trained a Random Forest Regressor using solubility data from small molecules. This model predicts the solubility of larger molecules by evaluating key properties:
+
+- **Number of Rotational Bonds**
+- **Hydrogen Bond Donors**
+- **Molecular Weight**
+- **Topological Polar Surface Area**
+
+Each property is weighted according to its influence on solubility. The model classifies molecules into four solubility categories:
+
+- Highly Soluble
+- Soluble
+- Low Solubility
+- Insoluble
+
+## Technical Implementation
+
+- **Frontend**: Developed using Jinja templating with HTML and CSS.
+- **Backend**: Built with Flask to handle API calls.
+- **Molecular Property Calculation**: Utilized RDKit to compute molecular properties.
+- **3D Molecular Visualization**: Employed PyMOL to generate 3D images of molecules.
+
+## User Interaction
+
+Users can input a molecule's name via a search bar. The application then displays:
+
+- A 3D image of the molecule
+- Calculated properties
+- Predicted solubility level
+
+## Installation and Setup
+
+1. **Clone the repository**:
+
+   ```bash
+   git clone https://github.com/natashagit/kinaseHTGS.git
+   
+2. **Navigate to the project directory and install dependencies:**:
 ```sh
 # To install/update the project's dependencies
+$> cd kinaseHTGS
 $> pip install -r requirements.txt
 
-# To start the server
+3. **Run the application**:
 $> python -m flask run
-```
 
-## Starter code
+## Repository Structure
 
-We've provided you with some starter boilerplate code that should enable your team to quickly prototype your application.
+- **app.py**: Main Flask application file.
+- **chemistry.py**: Contains functions for molecular property calculations.
+- **prediction.py**: Handles the solubility prediction logic.
+- **templates/**: Directory for HTML templates.
+- **filtered_SOL.csv**: Dataset for small molecules.
+- **requirements.txt**: Lists all Python dependencies.
+- **visualize.ipynb**: Used to create 3D images of molecules
 
-### `app.py`
+## Tools and Libraries
 
-The entrypoint for your flask application is in the `app.py` module. The `flask run` command is set up to automatically find and run the flask application defined in this module. You can add more modules to add additional functionality as your project needs it (like the `chemistry.py` module in the [demo](https://github.com/schrodinger/hacking-the-gender-stack-2025-demo)).
+This project utilizes the following tools and libraries:
 
-### `templates/base.html`
+- **[Flask](https://flask.palletsprojects.com/)**: For backend development.
+- **[RDKit](https://www.rdkit.org/)**: For molecular property computations.
+- **[PyMOL](https://pymol.org/2/)**: For 3D molecular visualizations.
 
-We've included a base Jinja template that we recommend extending in any of your own templates (learn more about extending templates [here](https://jinja.palletsprojects.com/en/stable/templates/#template-inheritance)):
 
-```html
-<!-- templates/my-template.html -->
 
-{% extends "base.html" %}
 
-{% block content %}
-<p>
-  The HTML markup for your page should be included in the 'content' block
-</p>
-{% endblock %}
-
-{% block styles %}
-<style>
-  // Any custom CSS you may need to write should be included in a style tag within the 'styles' block
-</style>
-{% endblock %}
-
-{% block scripts %}
-<script>
-  // Any JavaScript you write should be included in the 'scripts' block
-</script>
-{% endblock %}
-```
-
-The base template includes [Bootstrap](https://getbootstrap.com/), a frontend toolkit, to allow you to quickly create polished UI elements. You can learn more about Bootstrap [here](https://getbootstrap.com/docs/5.3/getting-started/introduction/). (NOTE: The base template includes a maximal bundle of Bootstrap utilities that includes all necessary modules for supporting advanced features like tooltips and [Bootstrap icons](https://icons.getbootstrap.com/))
