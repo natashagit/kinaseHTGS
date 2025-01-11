@@ -48,10 +48,12 @@ Users can input a molecule's name via a search bar. The application then display
    git clone https://github.com/natashagit/kinaseHTGS.git
    
 2. **Navigate to the project directory and install dependencies:**:
-```sh
+
 # To install/update the project's dependencies
-$> cd kinaseHTGS
-$> pip install -r requirements.txt
+```sh
+cd kinaseHTGS
+pip install -r requirements.txt
+```
 
 3. **Run the application**:
 
